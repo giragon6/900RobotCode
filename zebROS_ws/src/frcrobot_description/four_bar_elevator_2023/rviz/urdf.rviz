@@ -10,7 +10,7 @@ Panels:
         - /TF1
         - /RobotModel2
       Splitter Ratio: 0.5
-    Tree Height: 822
+    Tree Height: 1038
   - Class: rviz/Selection
     Name: Selection
   - Class: rviz/Tool Properties
@@ -59,20 +59,20 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        All Links Enabled: true
+        All Links Enabled:
+          {}
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        base_link:
+        map:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-        central_chassis:
+        water_game_link:
           Alpha: 1
           Show Axes: false
           Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: robot_description
       TF Prefix: ""
@@ -88,9 +88,77 @@ Visualization Manager:
         All Enabled: true
         base_link:
           Value: true
-        central_chassis:
+        body_link:
+          Value: true
+        cam0:
+          Value: true
+        cam1:
+          Value: true
+        cam2:
+          Value: true
+        cam3:
+          Value: true
+        end_effector_link:
+          Value: true
+        frc_robot:
+          Value: true
+        imu:
+          Value: true
+        left_pipe:
           Value: true
         map:
+          Value: true
+        odom:
+          Value: true
+        right_pipe:
+          Value: true
+        tag_1:
+          Value: true
+        tag_10:
+          Value: true
+        tag_11:
+          Value: true
+        tag_12:
+          Value: true
+        tag_13:
+          Value: true
+        tag_14:
+          Value: true
+        tag_15:
+          Value: true
+        tag_16:
+          Value: true
+        tag_17:
+          Value: true
+        tag_18:
+          Value: true
+        tag_19:
+          Value: true
+        tag_2:
+          Value: true
+        tag_20:
+          Value: true
+        tag_21:
+          Value: true
+        tag_22:
+          Value: true
+        tag_3:
+          Value: true
+        tag_4:
+          Value: true
+        tag_5:
+          Value: true
+        tag_6:
+          Value: true
+        tag_7:
+          Value: true
+        tag_8:
+          Value: true
+        tag_9:
+          Value: true
+        water_game_link:
+          Value: true
+        zebracorn_labs:
           Value: true
       Marker Alpha: 1
       Marker Scale: 0.5
@@ -100,8 +168,73 @@ Visualization Manager:
       Show Names: true
       Tree:
         map:
-          base_link:
-            central_chassis:
+          frc_robot:
+            body_link:
+              {}
+            cam0:
+              {}
+            cam1:
+              {}
+            cam2:
+              {}
+            cam3:
+              {}
+          odom:
+            base_link:
+              end_effector_link:
+                {}
+              imu:
+                {}
+              left_pipe:
+                {}
+              right_pipe:
+                {}
+          water_game_link:
+            {}
+          zebracorn_labs:
+            tag_1:
+              {}
+            tag_10:
+              {}
+            tag_11:
+              {}
+            tag_12:
+              {}
+            tag_13:
+              {}
+            tag_14:
+              {}
+            tag_15:
+              {}
+            tag_16:
+              {}
+            tag_17:
+              {}
+            tag_18:
+              {}
+            tag_19:
+              {}
+            tag_2:
+              {}
+            tag_20:
+              {}
+            tag_21:
+              {}
+            tag_22:
+              {}
+            tag_3:
+              {}
+            tag_4:
+              {}
+            tag_5:
+              {}
+            tag_6:
+              {}
+            tag_7:
+              {}
+            tag_8:
+              {}
+            tag_9:
               {}
       Update Interval: 0
       Value: true
@@ -110,45 +243,12 @@ Visualization Manager:
       Collision Enabled: false
       Enabled: true
       Links:
-        All Links Enabled: true
+        All Links Enabled:
+          {}
         Expand Joint Details: false
         Expand Link Details: false
         Expand Tree: false
         Link Tree Style: Links in Alphabetic Order
-        map:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-        tag_1:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tag_2:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tag_3:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tag_5:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tag_6:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
-        tag_7:
-          Alpha: 1
-          Show Axes: false
-          Show Trail: false
-          Value: true
       Name: RobotModel
       Robot Description: tags
       TF Prefix: ""
@@ -183,7 +283,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 20.701683044433594
+      Distance: 2.1934642791748047
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -199,9 +299,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 1.2403969764709473
+      Pitch: 0.3997965455055237
       Target Frame: <Fixed Frame>
-      Yaw: 4.173583030700684
+      Yaw: 4.033584117889404
     Saved:
       - Class: rviz/Orbit
         Distance: 20.701683044433594
@@ -226,10 +326,10 @@ Visualization Manager:
 Window Geometry:
   Displays:
     collapsed: false
-  Height: 1126
+  Height: 1335
   Hide Left Dock: false
   Hide Right Dock: false
-  QMainWindow State: 000000ff00000000fd00000004000000000000013c000003c1fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005d00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003e000003c1000000cb00fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c000002610000000100000100000003c1fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003e000003c1000000a500fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e100000197000000030000026700000044fc0100000002fb0000000800540069006d00650100000000000002670000034400fffffffb0000000800540069006d0065010000000000000450000000000000000000000020000003c100000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
+  QMainWindow State: 000000ff00000000fd00000004000000000000015600000497fc0200000008fb0000001200530065006c0065006300740069006f006e00000001e10000009b0000005c00fffffffb0000001e0054006f006f006c002000500072006f007000650072007400690065007302000001ed000001df00000185000000a3fb000000120056006900650077007300200054006f006f02000001df000002110000018500000122fb000000200054006f006f006c002000500072006f0070006500720074006900650073003203000002880000011d000002210000017afb000000100044006900730070006c006100790073010000003b00000497000000c700fffffffb0000002000730065006c0065006300740069006f006e00200062007500660066006500720200000138000000aa0000023a00000294fb00000014005700690064006500530074006500720065006f02000000e6000000d2000003ee0000030bfb0000000c004b0069006e0065006300740200000186000001060000030c00000261000000010000010000000497fc0200000003fb0000001e0054006f006f006c002000500072006f00700065007200740069006500730100000041000000780000000000000000fb0000000a00560069006500770073010000003b00000497000000a000fffffffb0000001200530065006c0065006300740069006f006e010000025a000000b200000000000000000000000200000490000000a9fc0100000001fb0000000a00560069006500770073030000004e00000080000002e10000019700000003000009f400000044fc0100000002fb0000000800540069006d00650100000000000009f40000031600fffffffb0000000800540069006d00650100000000000004500000000000000000000007920000049700000004000000040000000800000008fc0000000100000002000000010000000a0054006f006f006c00730100000000ffffffff0000000000000000
   Selection:
     collapsed: false
   Time:
@@ -238,6 +338,6 @@ Window Geometry:
     collapsed: false
   Views:
     collapsed: false
-  Width: 615
-  X: 1287
-  Y: 32
+  Width: 2548
+  X: 0
+  Y: 0
