@@ -1,0 +1,650 @@
+tagslam_parameters:
+# optimizer mode: full (full optimization, no iSAM2 used)
+#                 slow (use iSAM2, but test for error and use full if error is large)
+#                 fast (iSAM2 only, no test for error)
+# default: slow
+  optimizer_mode: fast
+# minimum angle [in degrees] between optical axis and tag surface
+  minimum_viewing_angle: 15.0
+# minimum tag area in pixels^2. Any tags smaller than that are ignored
+  minimum_tag_area: 300
+# number of incremental updates before running
+# a full graph optimization (default: 50)
+  max_num_incremental_opt: 50
+# estimated error of tag corner detector
+  pixel_noise: 1.0
+# maximum allowed subgraph error. If error is above that,
+# the frame is thrown away, the measurement ignored.
+  max_subgraph_error: 50.0
+# Noise with which the subgraph absolute priors will be
+# pinned down. This parameter usually does not need to be touched.
+  subgraph_abs_prior_position_noise: 0.1
+  subgraph_abs_prior_rotation_noise: 0.1
+# if the time stamps (header.stamp) of your data messages are not
+# identical (hardware synced), set this option to true, and
+# tagslam tries to line them up as well as possible. Expect larger errors
+# because the data is not truly synchronous.
+  use_approximate_sync: true
+body_defaults:
+  position_noise: 0.05
+  rotation_noise: 0.01
+# website says this is good when all tags are already known for state estimation and gives speed 
+#amnesia: true
+amnesia: true
+# no default body because all unknown tags should be ignored
+
+default_body: zebracorn_labs
+bodies:
+ - zebracorn_labs:
+    is_static: true
+    default_tag_size: 0.1651
+    pose:
+      position:
+        x: 0
+        y: 0
+        z: 0
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+      position_noise:
+        x: 0.0001
+        y: 0.0001
+        z: 0.0001
+      rotation_noise:
+        x: 1.0e-05
+        y: 1.0e-05
+        z: 1.0e-05
+    type: simple
+    # side to side mapping
+    # THIS IS THE DEFAULT MAP, WE WILL NEED TO CHANGE AFTER WE MAP
+    tags:
+      - id: 1
+        pose:
+          position:
+            x: 11.863959
+            y: 7.411491399999999
+            z: 0.889
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 2
+        pose:
+          position:
+            x: 11.9013986
+            y: 4.6247558
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.3602405923005075e-16
+            y: 2.221441469079183
+            z: 2.221441469079183
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 3
+        pose:
+          position:
+            x: 11.2978438
+            y: 4.3769534
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 4
+        pose:
+          position:
+            x: 11.2978438
+            y: 4.0213534
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 5
+        pose:
+          position:
+            x: 11.9013986
+            y: 3.417951
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.5707963267948963
+            y: -1.92367069372179e-16
+            z: -1.9236706937217895e-16
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 6
+        pose:
+          position:
+            x: 11.863959
+            y: 0.6312154
+            z: 0.889
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 7
+        pose:
+          position:
+            x: 11.9388636
+            y: 0.6312154
+            z: 0.889
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 8
+        pose:
+          position:
+            x: 12.2569986
+            y: 3.417951
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.5707963267948963
+            y: -1.92367069372179e-16
+            z: -1.9236706937217895e-16
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 9
+        pose:
+          position:
+            x: 12.5051566
+            y: 3.6657534
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 10
+        pose:
+          position:
+            x: 12.5051566
+            y: 4.0213534
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 11
+        pose:
+          position:
+            x: 12.2569986
+            y: 4.6247558
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.3602405923005075e-16
+            y: 2.221441469079183
+            z: 2.221441469079183
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 12
+        pose:
+          position:
+            x: 11.9388636
+            y: 7.411491399999999
+            z: 0.889
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 13
+        pose:
+          position:
+            x: 16.499332
+            y: 7.391907999999999
+            z: 0.55245
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 14
+        pose:
+          position:
+            x: 16.499332
+            y: 6.960107999999999
+            z: 0.55245
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 15
+        pose:
+          position:
+            x: 16.4989764
+            y: 4.3124882
+            z: 0.55245
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 16
+        pose:
+          position:
+            x: 16.4989764
+            y: 3.8806881999999994
+            z: 0.55245
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 17
+        pose:
+          position:
+            x: 4.6490636
+            y: 0.6312154
+            z: 0.889
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 18
+        pose:
+          position:
+            x: 4.6115986
+            y: 3.417951
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.5707963267948963
+            y: -1.92367069372179e-16
+            z: -1.9236706937217895e-16
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 19
+        pose:
+          position:
+            x: 5.2151534
+            y: 3.6657534
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 20
+        pose:
+          position:
+            x: 5.2151534
+            y: 4.0213534
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 21
+        pose:
+          position:
+            x: 4.6115986
+            y: 4.6247558
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.3602405923005075e-16
+            y: 2.221441469079183
+            z: 2.221441469079183
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 22
+        pose:
+          position:
+            x: 4.6490636
+            y: 7.411491399999999
+            z: 0.889
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 23
+        pose:
+          position:
+            x: 4.574159
+            y: 7.411491399999999
+            z: 0.889
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 24
+        pose:
+          position:
+            x: 4.2559986
+            y: 4.6247558
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.3602405923005075e-16
+            y: 2.221441469079183
+            z: 2.221441469079183
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 25
+        pose:
+          position:
+            x: 4.007866
+            y: 4.3769534
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 26
+        pose:
+          position:
+            x: 4.007866
+            y: 4.0213534
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 27
+        pose:
+          position:
+            x: 4.2559986
+            y: 3.417951
+            z: 1.12395
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.5707963267948963
+            y: -1.92367069372179e-16
+            z: -1.9236706937217895e-16
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 28
+        pose:
+          position:
+            x: 4.574159
+            y: 0.6312154
+            z: 0.889
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.209199576156145
+            y: -1.2091995761561454
+            z: -1.2091995761561452
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 29
+        pose:
+          position:
+            x: 0.0136906
+            y: 0.6507734
+            z: 0.55245
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 30
+        pose:
+          position:
+            x: 0.0136906
+            y: 1.0825734
+            z: 0.55245
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651
+      - id: 31
+        pose:
+          position:
+            x: 0.0140462
+            y: 3.7301932
+            z: 0.55245
+          position_noise:
+            x: 0.0005
+            y: 0.0005
+            z: 0.0005
+          rotation:
+            x: 1.2091995761561452
+            y: 1.2091995761561452
+            z: 1.209199576156145
+          rotation_noise:
+            x: 0.004
+            y: 0.004
+            z: 0.004
+        size: 0.1651

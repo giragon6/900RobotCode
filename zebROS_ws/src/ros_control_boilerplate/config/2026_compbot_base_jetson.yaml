@@ -1,0 +1,50 @@
+# ros_control_boilerplate Settings -----------------------
+# Settings for ros_control control loop
+generic_hw_control_loop:
+  loop_hz: 250
+  cycle_time_error_threshold: 0.01
+  pcm_read_hz: 20
+  pdh_read_hz: 20
+  pdp_read_hz: 20
+  ph_read_hz: 20
+  robot_iteration_hz: 20
+  match_data_read_hz: 2
+  robot_controller_read_hz: 20
+
+# Settings for ros_control hardware interface
+# Map a name for each valid joint to a CAN id
+# For future expansion, change hw_id to specify one
+# of several types of HW interface : CAN_id, PWM_id, DIO_id, AIO_id, etc.
+hardware_interface:
+   # Identify this as a non-Rio controller using Linux
+   # socketCan device can0 to communicate
+   run_hal_robot: false
+
+   joints:
+       - {name: candle1, can_id: 0, can_bus: CANivore, type: candle, local: true}
+
+       - {name: robot_code_ready_jetson, local: true, type: ready}
+
+# Create controllers for each joint
+#
+# Entry is the name of the controller. It can be anything.
+# It will create a namespace with that name under the main
+# controller namespace. Subscribed topics for that controller
+# will be most often show up under
+# <top level controller manager ns>/<controller ns>/topic
+# e.g.
+# /frcrobot/joint1_talon_controller/command
+# /frcrobot/joint2_talon_controller/command
+# /frcrobot/talon_states
+
+match_state_listener_controller:
+    type:      state_listener_controller/MatchStateListenerController
+    topic:     /frcrobot_rio/match_data
+
+candle_controller:
+    type: candle_controller/CANdleController
+    name: candle1
+
+candle_state_controller:
+    type: candle_state_controller/CANdleStateController
+    publish_rate: 20

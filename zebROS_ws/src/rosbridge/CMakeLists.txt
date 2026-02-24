@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(rosbridge)
+project(rosbridge_pinger)
 
 include("../cmake_modules/CMakeOpt.cmake")
 

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- GDB functionality -->
+	<arg name="debug" default="false" />
+	<arg unless="$(arg debug)" name="launch_prefix" value="" />
+	<arg     if="$(arg debug)" name="launch_prefix" value="gdb -ex run --args " />
+
+	<arg name="hw_or_sim" default="hw" />
+	<arg name="record" default="false" />
+
+	<group ns="frcrobot_jetson">
+		<rosparam file="$(find ros_control_boilerplate)/config/2026_compbot_base_jetson.yaml" command="load"/>
+		
+		<rosparam file="$(find ros_control_boilerplate)/config/robot_code_ready_controller_jetson.yaml" command="load"/>
+
+		<!-- Load hardware interface -->
+		<node name="frcrobot_$(arg hw_or_sim)_interface" pkg="ros_control_boilerplate" type="frcrobot_$(arg hw_or_sim)_main"
+			output="screen" launch-prefix="$(arg launch_prefix)">
+		</node>
+
+		<!-- Load controller manager-->
+		<node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
+			output="screen" args="spawn
+			 latency_compensation_state_controller
+
+			 match_state_listener_controller
+			 candle_controller
+			 candle_state_controller
+			 
+			 robot_code_ready_controller" />
+
+		<node name="uptime_jetson" pkg="uptime" type="uptime_node" output="screen" />
+
+		<include file="$(find cpu_monitor)/launch/cpu_monitor.launch">
+			<arg name="poll_period" value="5"/>
+		</include>
+	</group>
+
+		<!--TODO: Migrate this  -->
+	<!-- <include file="$(find auto_node)/launch/auto_node.launch"/> -->
+
+	<!-- Add 2026 actionlib servers here -->
+
+	<!-- TODO: Migrate this -->
+	<!-- <include file="$(find candle_node)/launch/2025_candle_node.launch"/> -->
+	
+	<include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" unless="$(eval hw_or_sim=='sim')"/>
+
+	<include file="$(find controller_node)/launch/record_2026_compbot.launch" if="$(arg record)" />
+	
+	<!-- <node pkg="behaviors" type="2025_fake_sim.py" name="fake_sim_2025" if="$(eval hw_or_sim=='sim')"/> -->
+
+	<group ns="tagslam_match_data_republisher">
+		<node pkg="behaviors" type="tagslam_match_data_republisher.py" name="tagslam_match_data_republisher" respawn="true" output="screen"/>
+	</group>
+	
+</launch>

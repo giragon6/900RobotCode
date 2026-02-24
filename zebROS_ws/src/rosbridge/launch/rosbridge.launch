@@ -2,9 +2,8 @@
 <launch>
     <group ns="ros_to_nt">
         <include file="$(find ros_networktables_bridge_host)/launch/nt_client.launch">
-            <arg name="nt_host" value="10.9.0.5"/>
-            <arg name="nt_port" value="5810"/>
+            <arg name="nt_host" value="172.25.160.1"/>
         </include>
     </group>
-    <node name="pinger_node" pkg="rosbridge" type="pinger.py" output="screen"></node>
+    <node name="pinger_node" pkg="rosbridge_pinger" type="pinger.py" output="screen"></node>
 </launch>
