@@ -10,3 +10,9 @@
 [submodule "cccl"]
 	path = cccl
 	url = https://github.com/NVIDIA/cccl.git
+[submodule "rosbridge_suite"]
+	path = rosbridge_suite
+	url = https://github.com/RobotWebTools/rosbridge_suite.git
+[submodule "zebROS_ws/src/ros_networktables_bridge_host"]
+	path = zebROS_ws/src/ros_networktables_bridge_host
+	url = https://github.com/frc-88/ros_networktables_bridge_host.git

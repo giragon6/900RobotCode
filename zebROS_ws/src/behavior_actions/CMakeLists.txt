@@ -55,6 +55,8 @@ add_message_files(
   AutoMode.msg
   AutoState.msg
   ShooterOffset.msg
+  RawFiducial.msg
+  RawFiducialArrayStamped.msg
 #   GamePieceState2023.msg
 #   IntakeState2023.msg
   AutoAlignSpeaker.msg
