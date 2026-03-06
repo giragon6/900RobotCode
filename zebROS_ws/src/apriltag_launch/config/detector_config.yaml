@@ -1,26 +1,35 @@
 legal_tags: 
-    # - 1
-    # - 2
-    # - 3
-    # - 4
-    # - 5
-    - 6 # start of red reef
+    - 1
+    - 2
+    - 3
+    - 4
+    - 5
+    - 6 
     - 7
     - 8
     - 9
     - 10
-    - 11 # end of red reef
-    # - 12
-    # - 13
-    # - 14
-    # - 15
-    # - 16
-    - 17 # start of blue reef
+    - 11 
+    - 12
+    - 13
+    - 14
+    - 15
+    - 16
+    - 17 
     - 18
     - 19
     - 20
     - 21
-    - 22 # end of blue reef
+    - 22 
+    - 23
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    - 29
+    - 30
+    - 31
 
 # Default is 5, which tends to detect a lot of false positives in the
 # first stage of detection.  Increasing this value will reduce the number

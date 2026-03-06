@@ -10,13 +10,12 @@ import time
 FIELD_LENGTH = 17.55
 RED_TAGS = [6,7,8,9,10,11]
 BLUE_TAGS = [17,18,19,20,21,22]
-ALL_TAGS = list(range(33))
+ALL_TAGS = list(range(32))
 
 rospy.init_node("tag_filter_disabler")
 tag_allow_srvs = [rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_9_video0/set_allowed_tags_service", SetAllowedTags), 
                   rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_9_video1/set_allowed_tags_service", SetAllowedTags),
-                  rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_10_video0/set_allowed_tags_service", SetAllowedTags),
-                  rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_10_video1/set_allowed_tags_service", SetAllowedTags)]
+                  rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_9_video2/set_allowed_tags_service", SetAllowedTags),]
 
 time.sleep(1.0)
 

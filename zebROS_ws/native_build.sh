@@ -47,10 +47,10 @@ fi
 # for those devices since that's all they'll run
 # Don't use --buildlist, since that doesn't auto-build the dependencies
 # of the packages listed
-cat /sys/devices/soc0/soc_id 2> /dev/null | grep -q 25 
-if [ $? -eq 0 ]; then
-	EXPLICIT_PACKAGE_LIST="cv_camera gpu_apriltag controller_node apriltag_launch"
-fi
+# cat /sys/devices/soc0/soc_id 2> /dev/null | grep -q 25 
+# if [ $? -eq 0 ]; then
+# 	EXPLICIT_PACKAGE_LIST="cv_camera gpu_apriltag controller_node apriltag_launch"
+# fi
 catkin config --skiplist \
 	ackermann_steering_controller \
 	adi_driver \

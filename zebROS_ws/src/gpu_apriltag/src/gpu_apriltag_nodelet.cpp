@@ -42,7 +42,7 @@ public:
         set_allowed_tags_service_ = nh_.advertiseService("set_allowed_tags_service", &FRC971GpuApriltagNodelet::cmd_service, this);
         // Load config for legal apriltags
         std::vector<int> _legal_tags_vec;
-        nh_.param<std::vector<int>>("legal_tags", _legal_tags_vec, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16});
+        nh_.param<std::vector<int>>("legal_tags", _legal_tags_vec, {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31});
         for (int legal_tag : _legal_tags_vec)
         {
             legal_tags_.emplace(legal_tag);
