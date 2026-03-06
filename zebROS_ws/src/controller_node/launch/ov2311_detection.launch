@@ -63,6 +63,10 @@
     <remap from="/apriltag_$(arg camera_name)/apriltag_detection/tag_detection_msg" to="/apriltag_$(arg camera_name)/tag_detection_msg"/>
     <rosparam file="$(find apriltag_launch)/config/detector_config.yaml" command="load"/>
   </node>
+
+  <node pkg="behaviors" type="2026_nt_raw_fid_republisher.py" name="nt_raw_fid_republisher_$(arg camera_name)" respawn="true" output="screen">
+    <param name="cam_id"                  value="$(arg camera_id)" />
+  </node>
   <!--
     To collect profile info from the Jetson :
   sudo nsys profile -t cuda,nvtx -s cpu -f true ~/900RobotCode/zebROS_ws/ROSJetsonMaster.sh rosrun gpu_apriltag gpu_apriltag_node image_rect_color:=/ov2311_reformatter/image_reformatted /apriltag_ov2311/apriltag_detection/tag_detection_msg:=/apriltag_ov2311/tag_detection_msg __name:=apriltag_detection_ov2311

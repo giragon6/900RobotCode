@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+	<group ns="pinger">
+		<node name="pinger" pkg="behaviors" type="2026_pinger.py" output="screen"/>
+	</group>
+</launch>

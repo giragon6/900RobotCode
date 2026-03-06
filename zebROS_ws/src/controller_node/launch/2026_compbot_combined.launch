@@ -15,7 +15,6 @@
 	<arg name="record" default="false"/>
 
 	<!-- <param name="/use_sim_time" value="true" if="$(eval hw_or_sim=='sim' and arg('stage_sim'))"/> -->
-	<param name="/use_sim_time" value="true" if="$(eval hw_or_sim=='sim')"/>
 
     <!-- Jetson Nodes -->
     <include file="$(find controller_node)/launch/2026_compbot_jetson.launch" pass_all_args="true"/>
@@ -42,19 +41,19 @@
 	</include>
 
     <!-- Jetson .10 Nodes -->
-	<group if="$(eval hw_or_sim=='hw')">
+	<!-- <group if="$(eval hw_or_sim=='hw')">
 		<machine name="jetson_10" address="10.9.0.10" env-loader="/home/ubuntu/900RobotCode/zebROS_ws/ROSJetsonMaster.sh" user="ubuntu" password="ubuntu" default="true"/>
 	</group>
     <include file="$(find controller_node)/launch/2026_compbot_vision.launch"> 
 		<arg name="run_camera" value="$(eval arg('hw_or_sim') == 'hw')" />
 		<arg name="hw_or_sim" value="$(arg hw_or_sim)" />
 		<arg name="ip_underscore" value="10_9_0_10"/>
-	</include>
+	</include> -->
 
 	  <!-- if in sim, broadcast rosbridge on localhost -->
 	<group ns="ros_to_nt">
 		<include file="$(find ros_networktables_bridge_host)/launch/nt_client.launch">
-				<arg name="nt_host" if="$(eval hw_or_sim=='sim')" value="172.25.160.1"/>
+				<arg name="nt_host" if="$(eval hw_or_sim=='sim')" value="localhost"/>
 				<arg name="nt_host" if="$(eval hw_or_sim=='hw')" value="10.9.0.2"/>
 		</include>
 	</group>
