@@ -21,8 +21,6 @@ hardware_interface:
    run_hal_robot: false
 
    joints:
-       - {name: candle1, can_id: 0, can_bus: CANivore, type: candle, local: true}
-
        - {name: robot_code_ready_jetson, local: true, type: ready}
 
 # Create controllers for each joint
@@ -37,14 +35,6 @@ hardware_interface:
 # /frcrobot/joint2_talon_controller/command
 # /frcrobot/talon_states
 
-match_state_listener_controller:
-    type:      state_listener_controller/MatchStateListenerController
-    topic:     /frcrobot_rio/match_data
-
-candle_controller:
-    type: candle_controller/CANdleController
-    name: candle1
-
-candle_state_controller:
-    type: candle_state_controller/CANdleStateController
-    publish_rate: 20
+# match_state_listener_controller:
+#     type:      state_listener_controller/MatchStateListenerController
+#     topic:     /frcrobot_rio/match_data

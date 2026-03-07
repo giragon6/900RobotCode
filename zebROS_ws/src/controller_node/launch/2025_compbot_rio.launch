@@ -31,7 +31,8 @@
 			 robot_controller_state_controller
 			 robot_code_ready_controller">
 		</node>
-			<!-- pdh_state_controller -->
+			<!-- pdh_state_controller   <node pkg="tf" type="static_transform_publisher" name="body_link_to_frc_robot" args="0 0 0 0 0.0 0 frc_robot body_link 100"/>
+-->
 		<node name="uptime_rio" pkg="uptime" type="uptime_node" output="screen" />
 
 		<include file="$(find cpu_monitor)/launch/cpu_monitor.launch">
