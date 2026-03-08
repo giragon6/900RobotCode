@@ -1,0 +1,26 @@
+cam0:
+  infotopic: /ov2311_10_9_0_9_video0/camera_info # /{cam_name}/camera_info
+  rostopic: /ov2311_10_9_0_9_video0_ignore
+  # CHECK THIS
+  tagtopic: /apriltag_detection_ov2311_10_9_0_9_video0/tags # /apriltag_detection_{cam_name}/tags
+  rig_body: frc_robot
+  wiggle_rotation: 0.01
+  wiggle_translation: 0.01
+
+cam1:
+  infotopic: /ov2311_10_9_0_9_video1/camera_info # /{cam_name}/camera_info
+  rostopic: /ov2311_10_9_0_9_video1_ignore
+  # CHECK THIS
+  tagtopic: /apriltag_detection_ov2311_10_9_0_9_video1/tags # /apriltag_detection_{cam_name}/tags
+  rig_body: frc_robot
+  wiggle_rotation: 0.01
+  wiggle_translation: 0.01
+
+cam2:
+  infotopic: /ov2311_10_9_0_9_video2/camera_info # /{cam_name}/camera_info
+  rostopic: /ov2311_10_9_0_9_video2_ignore
+  # CHECK THIS
+  tagtopic: /apriltag_detection_ov2311_10_9_0_9_video2/tags # /apriltag_detection_{cam_name}/tags
+  rig_body: frc_robot
+  wiggle_rotation: 0.01
+  wiggle_translation: 0.01

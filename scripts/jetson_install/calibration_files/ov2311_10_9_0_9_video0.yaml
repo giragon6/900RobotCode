@@ -1,7 +1,5 @@
-# The physical camera formerly attached to 10.9.0.9 video0 is now on 10.9.0.10 video1
-# The physical camera formerly attached to 10.9.0.10 video1 is now on 10.9.0.9 video0
-image_width: 1600
-image_height: 1300
+image_width: 800
+image_height: 600
 camera_name: ov2311_10_9_0_9_video0
 camera_matrix:
   rows: 3

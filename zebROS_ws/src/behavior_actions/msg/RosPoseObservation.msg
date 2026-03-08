@@ -1,0 +1,5 @@
+float64 timestamp
+geometry_msgs/Pose pose
+float64 ambiguity
+int32 tagCount
+float64 averageTagDistance

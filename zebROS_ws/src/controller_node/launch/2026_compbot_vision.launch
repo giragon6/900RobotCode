@@ -8,7 +8,7 @@
 	<arg name="ip_underscore"                        />
 
 
-	<!-- <include file="$(find controller_node)/launch/triple_ov2311_detection.launch" >
+	<include file="$(find controller_node)/launch/triple_ov2311_detection.launch" >
 		<arg name="run_camera"       value="$(arg run_camera)" />
 		<arg name="static_image"     value="$(arg static_image)" />
 		<arg name="run_gpu_apriltag" value="$(arg run_gpu_apriltag)" />
@@ -17,9 +17,9 @@
 		<arg name="cam0_name"        value="ov2311_$(arg ip_underscore)_video0" />
 		<arg name="cam1_name"        value="ov2311_$(arg ip_underscore)_video1" />
 		<arg name="cam2_name"        value="ov2311_$(arg ip_underscore)_video2" />
-  	</include> -->
+  	</include>
 
-	<include file="$(find controller_node)/launch/dual_ov2311_detection.launch" >
+	<!-- <include file="$(find controller_node)/launch/dual_ov2311_detection.launch" >
 		<arg name="run_camera"       value="$(arg run_camera)" />
 		<arg name="static_image"     value="$(arg static_image)" />
 		<arg name="run_gpu_apriltag" value="$(arg run_gpu_apriltag)" />
@@ -27,5 +27,5 @@
 
 		<arg name="cam0_name"        value="ov2311_$(arg ip_underscore)_video0" />
 		<arg name="cam1_name"        value="ov2311_$(arg ip_underscore)_video1" />
-  	</include>
+  	</include> -->
 </launch>

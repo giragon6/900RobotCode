@@ -19,7 +19,7 @@ if __name__ == '__main__':
                 latest_timestamp = msg.header.stamp
         return internal_tag_detection_cb
 
-    cameras = rospy.get_param("camera_names", ["ov2311_10_9_0_10_video0", "ov2311_10_9_0_10_video1", "ov2311_10_9_0_9_video0", "ov2311_10_9_0_9_video1"])
+    cameras = rospy.get_param("camera_names", ["ov2311_10_9_0_9_video0", "ov2311_10_9_0_9_video1", "ov2311_10_9_0_9_video2"])
     cameras_last_sent: dict = {}
     camera_pubs: dict = {}
     camera_subs: dict = {}

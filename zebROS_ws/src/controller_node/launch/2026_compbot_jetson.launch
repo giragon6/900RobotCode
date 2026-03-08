@@ -44,8 +44,8 @@
 	<!-- TODO: Migrate this -->
 	<!-- <include file="$(find candle_node)/launch/2025_candle_node.launch"/> -->
 	
-	<!-- <include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" unless="$(eval hw_or_sim=='sim')"/> -->
-	<include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" />
+	<include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" unless="$(eval hw_or_sim=='sim')"/>
+	<!-- <include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" /> -->
 
 	<include file="$(find controller_node)/launch/record_2026_compbot.launch" if="$(arg record)" />
 

@@ -9,32 +9,23 @@ from behavior_actions.srv import OverrideAllianceColor, OverrideAllianceColorReq
 from sensor_msgs.msg import CameraInfo
 from gpu_apriltag_msgs.srv import SetAllowedTags, SetAllowedTagsRequest, SetAllowedTagsResponse
 from apriltag_msgs.msg import ApriltagArrayStamped
-from behavior_actions.msg import RawFiducial, RawFiducialArrayStamped
+from behavior_actions.msg import RosPoseObservation, RosTargetObservation
 
-class RawFiducialRepublisher:
+class ObservationRepublisher:
 
     def __init__(self):
-        self.cam_info = None
-        self.cam_id = rospy.get_param("~cam_id")
+        self.pose_obs_pub = rospy.Publisher(f"/tagslam_pose_obs", RosPoseObservation, tcp_nodelay=True, queue_size=1)
+        self.targ_obs_pub = rospy.Publisher(f"/tagslam_targ_obs", RosTargetObservation, tcp_nodelay=True, queue_size=1)
 
-        self.raw_fid_pub = rospy.Publisher(f"/ov2311_10_9_0_9_video{self.cam_id}/raw_fiducials", RawFiducialArrayStamped, tcp_nodelay=True, queue_size=1)
         self.tf_buf = tf2_ros.Buffer()
         self.tf_listener = tf2_ros.TransformListener(self.tf_buf)
-        self.tag_detect_sub = rospy.Subscriber(f"/apriltag_detection_ov2311_10_9_0_9_video{self.cam_id}/tags", ApriltagArrayStamped, self.tag_detect_cb)
-        self.cam_info_sub = rospy.Subscriber(f"/ov2311_10_9_0_9_video{self.cam_id}/camera_info", CameraInfo, self.cam_info_cb)
-        # self.tag_allow_srvs = [rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_9_video0/set_allowed_tags_service", SetAllowedTags), 
-        #                         rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_9_video1/set_allowed_tags_service", SetAllowedTags),
-        #                         rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_10_video0/set_allowed_tags_service", SetAllowedTags),
-        #                         rospy.ServiceProxy("/apriltag_detection_ov2311_10_9_0_10_video1/set_allowed_tags_service", SetAllowedTags)]
+        self.tagslam_pose_sub = rospy.Subscriber("/tagslam/odom/body_frc_robot", Odometry, self.tag_detect_cb)
     
-    def cam_info_cb(self, msg: CameraInfo):
-        self.cam_info = msg
-    
-    def tag_detect_cb(self, msg: ApriltagArrayStamped):
+    def tagslam_cb(self, msg: Odometry):
         if (self.cam_info != None): 
-            # We need to convert ApriltagArrayStamped to RawFiducial (NetworkTables/WPILIB version)
-            tags = msg.apriltags
-            rfarr = RawFiducialArrayStamped()
+            # need to convert Odometry -> RosPoseObservation and RosTargetObservation
+            poseObs = RosPoseObservation()
+            targObs = RosTargetObservation()
             rfarr.rawFiducials = []
             rfarr.header.stamp = msg.header.stamp
             rfarr.header.frame_id = msg.header.frame_id

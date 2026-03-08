@@ -57,6 +57,8 @@ add_message_files(
   ShooterOffset.msg
   RawFiducial.msg
   RawFiducialArrayStamped.msg
+  RosPoseObservation.msg
+  RosTargetObservation.msg
 #   GamePieceState2023.msg
 #   IntakeState2023.msg
   AutoAlignSpeaker.msg
