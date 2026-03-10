@@ -17,7 +17,7 @@
   <arg name="mesh_dir" default="package://tagslam_viz/tags/$(arg family)"/>
   <arg name="tag_id_file" default="$(arg config_dir)/tagslam_$(arg field_type).yaml"/>
 
-  <node pkg="tagslam" type="tagslam_node" name="tagslam" clear_params="true" respawn="true">
+  <node pkg="tagslam" type="tagslam_node" name="tagslam" clear_params="true" respawn="true" >
     <rosparam param="cameras" command="load" file="$(arg calibration_file)"/>
     <rosparam param="tagslam_config" command="load"
 	      file="$(arg tagslam_config_file)"/>
@@ -34,13 +34,14 @@
 
   <node pkg="tagslam_launch" type="tagslam_launch_node" name="map_to_odom"/>
   <node pkg="tagslam_launch" type="tags_failsafe.py" name="tags_failsafe"/>
+  <node pkg="behaviors" type="2026_nt_pose_obs_republisher.py" name="nt_pose_obs_republisher"/>
 
   <!-- to visualize both wheeled and tagslam trajectories, bolt the odometry to the map
   <node pkg="tf" type="static_transform_publisher" name="odom_to_map" args="0 0 0 0 0.0 0 frc_robot body_link 100"/>
    -->
   <!-- to see how the robot would move around with tagslam + odom, connect the two frames at the robot -->
   
-  <node pkg="tf" type="static_transform_publisher" name="body_link_to_frc_robot" args="0 0 0 0 0.0 0 frc_robot body_link 100"/>
+  <node pkg="tf" type="static_transform_publisher" name="body_link_to_frc_robot" args="0 0 0 0 0.0 0 frc_robot base_link 100"/>
 
   <!--- visualize tags -->
   <param name="tags"

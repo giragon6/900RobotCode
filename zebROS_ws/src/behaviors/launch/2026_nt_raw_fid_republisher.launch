@@ -1,6 +1,0 @@
-<?xml version="1.0"?>
-<launch>
-	<group ns="nt_raw_fid_republisher">
-		<node name="nt_raw_fid_republisher" pkg="behaviors" type="2026_nt_raw_fid_republisher.py" output="screen"/>
-	</group>
-</launch>

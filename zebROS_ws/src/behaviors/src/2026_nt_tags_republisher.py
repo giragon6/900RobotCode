@@ -18,6 +18,7 @@ class RawFiducialRepublisher:
         self.cam_id = rospy.get_param("~cam_id")
 
         self.raw_fid_pub = rospy.Publisher(f"/ov2311_10_9_0_9_video{self.cam_id}/raw_fiducials", RawFiducialArrayStamped, tcp_nodelay=True, queue_size=1)
+
         self.tf_buf = tf2_ros.Buffer()
         self.tf_listener = tf2_ros.TransformListener(self.tf_buf)
         self.tag_detect_sub = rospy.Subscriber(f"/apriltag_detection_ov2311_10_9_0_9_video{self.cam_id}/tags", ApriltagArrayStamped, self.tag_detect_cb)
@@ -52,7 +53,7 @@ class RawFiducialRepublisher:
                 cx = self.cam_info.P[2]
                 cy = self.cam_info.P[6]
                 raw_fiducial.txnc = math.atan((tag.center.x - cx)/fx) * 180 / math.pi # have to convert to degrees
-                raw_fiducial.tync = math.atan((tag.center.y - cy)/fy)
+                raw_fiducial.tync = math.atan((tag.center.y - cy)/fy) * 180 / math.pi
                 cam_area = self.cam_info.height * self.cam_info.width
                 # get area of apriltag from corners
                 # using formula for clockwise oriented quadrilateral
@@ -62,12 +63,16 @@ class RawFiducialRepublisher:
                                 (c[0].y*c[1].x + c[1].y*c[2].x + c[2].y*c[3].x + c[3].y*c[0].x))
                 raw_fiducial.ta = tag_area / cam_area
                 
-                # # get transform from camera to tag
-                # cam_to_tag_tf = self.tf_buf.lookup_transform('cam0', f'tag_{tag.id}', rospy.Time(0))
-                # # get dist (do we need this?)
-                # x, y, z = cam_to_tag_tf.transform.translation.x, cam_to_tag_tf.transform.translation.y, cam_to_tag_tf.transform.translation.z
-                # raw_fiducial.distToCamera = math.sqrt(x**2 + y**2 + z**2)
-                raw_fiducial.distToCamera = 0 #TODO: FIX THIS
+                try:
+                    # get transform from camera to tag
+                    cam_to_tag_tf = self.tf_buf.lookup_transform('cam0', f'tag_{tag.id}', rospy.Time(0))
+                    # get dist (do we need this?)
+                    x, y, z = cam_to_tag_tf.transform.translation.x, cam_to_tag_tf.transform.translation.y, cam_to_tag_tf.transform.translation.z
+                    raw_fiducial.distToCamera = math.sqrt(x**2 + y**2 + z**2)
+                    raw_fiducial.distToTagValid = True
+                except:
+                    raw_fiducial.distToCamera = 0 #TODO: FIX THIS
+                    raw_fiducial.distToTagValid = False
                 
                 #TODO: make this accurate...?
                 raw_fiducial.ambiguity = 0
@@ -78,6 +83,6 @@ class RawFiducialRepublisher:
             # rospy.logerr("Not forwarding tag detection data to NetworkTables: Camera info isn't valid!")
 
 if __name__ == "__main__":
-    rospy.init_node("nt_raw_fid_republisher")
+    rospy.init_node("nt_tags_republisher")
     republisher = RawFiducialRepublisher()  
     rospy.spin()

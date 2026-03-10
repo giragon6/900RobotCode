@@ -19,15 +19,7 @@
 		</node>
 
 		<!-- Load controller manager-->
-		<!-- <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false"
-			output="screen" args="spawn
-			 latency_compensation_state_controller
-
-			 match_state_listener_controller
-			 candle_controller
-			 candle_state_controller
-			 
-			 robot_code_ready_controller" /> -->
+		<!-- <node name="ros_control_controller_manager" pkg="controller_manager" type="controller_manager" respawn="false" output="screen" /> -->
 
 		<!-- <node name="uptime_jetson" pkg="uptime" type="uptime_node" output="screen" /> -->
 <!-- 
@@ -44,13 +36,17 @@
 	<!-- TODO: Migrate this -->
 	<!-- <include file="$(find candle_node)/launch/2025_candle_node.launch"/> -->
 	
-	<include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" unless="$(eval hw_or_sim=='sim')"/>
-	<!-- <include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" /> -->
+	<!-- <include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" unless="$(eval hw_or_sim=='sim')"/> -->
+	<include file="$(find tagslam_launch)/launch/2026_compbot_tagslam.launch" />
 
 	<include file="$(find controller_node)/launch/record_2026_compbot.launch" if="$(arg record)" />
 
 	<node pkg="behaviors" type="2026_pinger.py" name="pinger" respawn="true" output="screen"/>
 	<node pkg="behaviors" type="2026_odom_receiver.py" name="odom_receiver" respawn="true" output="screen"/>
+
+	<!-- <node pkg="tf2_ros" type="static_transform_publisher" name="tagslam_map_to_lab" args="0 0 0 0 0 0 map zebracorn_labs" /> -->
+
+	<!-- <node pkg="tf2_ros" type="static_transform_publisher" name="tagslam_map_to_lab" args="0 0 0 0 0 0 map odom" /> -->
 
 	<!-- <node pkg="tf2_ros" type="static_transform_publisher" name="tagslam_odom_to_base_link" args="0 0 0 0 0 0 frc_robot base_link" /> -->
 	

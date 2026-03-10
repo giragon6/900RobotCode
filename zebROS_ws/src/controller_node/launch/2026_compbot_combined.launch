@@ -14,10 +14,12 @@
 	<arg name="stage_sim" default="false"/> -->
 	<arg name="record" default="false"/>
 
-	<!-- <param name="/use_sim_time" value="true" if="$(eval hw_or_sim=='sim' and arg('stage_sim'))"/> -->
+	<group if="$(eval hw_or_sim=='sim')">
+		<param name="/use_sim_time" value="true" if="$(eval hw_or_sim=='sim')"/>
+	</group>
 
     <!-- Jetson Nodes -->
-    <include file="$(find controller_node)/launch/2026_compbot_jetson.launch" pass_all_args="true"/>
+    <include file="$(find controller_node)/launch/2026_compbot_jetson.launch" pass_all_args="true" />
 
     <!-- RIO Nodes -->
 	<!-- For hw, run the Rio stuff on the Rio.

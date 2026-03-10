@@ -65,7 +65,7 @@
     <rosparam file="$(find apriltag_launch)/config/detector_config.yaml" command="load"/>
   </node>
 
-  <node pkg="behaviors" type="2026_nt_raw_fid_republisher.py" name="nt_raw_fid_republisher_$(arg camera_name)" respawn="true" output="screen">
+  <node pkg="behaviors" type="2026_nt_tags_republisher.py" name="nt_tags_republisher_$(arg camera_name)" respawn="true" output="screen">
     <param name="cam_id"                  value="$(arg camera_id)" />
   </node>
   <!--
